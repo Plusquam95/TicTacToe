@@ -7,6 +7,7 @@ import { WinnerModal } from "./components/WinnerModal";
 import { Board } from "./components/Board";
 import { Turns } from "./components/Turns";
 import { saveGameStorage, resetGameStorage } from "./logic/save-game";
+import { Nav } from "../mouse-follower/mouse-follow/src/componentes/Nav";
 function App() {
   const [board, setboard] = useState(() => {
     const boardFromStorage = window.localStorage.getItem("tablero");
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <>
+      <Nav />
       <main className="board">
         <Board updateboard={updateboard} board={board} resetGame={resetGame} />
         <Turns turn={turn} />
