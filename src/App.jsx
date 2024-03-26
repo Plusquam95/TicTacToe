@@ -8,8 +8,16 @@ import { Board } from "./components/Board";
 import { Turns } from "./components/Turns";
 
 function App() {
-  const [board, setboard] = useState(Array(9).fill(null));
-  const [turn, setTurn] = useState(TURNS.X);
+  const [board, setboard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem("tablero");
+    if (boardFromStorage) return JSON.parse(boardFromStorage);
+    return Array(9).fill(null);
+  });
+
+  const [turn, setTurn] = useState(() => {
+    const turnStorage = window.localStorage.getItem("turn");
+    return turnStorage ?? TURNS.X;
+  });
   //Ganador o empate Null que no hay ganador false empate
   const [winner, setWinner] = useState(null);
 
@@ -22,6 +30,10 @@ function App() {
     setboard(newBoard);
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
+
+    // GUARDAR PARTIDA EN LOCAL STORAGE
+    window.localStorage.setItem("tablero", JSON.stringify(newBoard));
+    window.localStorage.setItem("turn", newTurn);
     // revisar si hay un ganador
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
@@ -36,6 +48,9 @@ function App() {
     setboard(Array(9).fill(null));
     setWinner(null);
     setTurn(TURNS.X);
+
+    window.localStorage.removeItem("tablero");
+    window.localStorage.removeItem("turn");
   };
   return (
     <>
