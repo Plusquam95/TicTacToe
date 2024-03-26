@@ -1,0 +1,117 @@
+#root {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #fff;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.square:hover {
+  border-color: #646cff;
+}
+
+
+.turns {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+}
+
+.isSelected {
+  box-shadow: 0 0 50px 15px #6f6f6f;
+  transition: .3s ease-in-out box-shadow;
+}
+
+/* MODAL WINNER OR DRAW */
+
+
+.winnerModal {
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 50px 15px #6f6f6f;
+  transition: .3s ease-in-out box-shadow;
+  display: flex;
+  flex-direction: column;
+  background-color: #0d0d0d;
+  border-radius: 30px;
+  opacity: .97;
+}
+
+.titulo-tictac {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.titulo-tictac h1 {
+  line-height: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  gap: 20px;
+}
+
+.text h2 {
+  line-height: 0;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+}
+
+/* .square p {
+  color: #646cff;
+} */
+
+.board {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.setTurnWrite {
+  animation: scaleFrom 1s ease-in-out;
+}
+
+@keyframes scaleFrom {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
